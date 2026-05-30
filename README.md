@@ -184,8 +184,6 @@ dopamine_lock_launcher/lib/screens/home_screen.dart
 
 ## Repository Description
 
-Use this for your GitHub repository description:
-
 ```text
 A mindful Flutter Android launcher that adds a question-based toll booth before distracting apps, with offline SQLite storage and a FastAPI sync backend.
 ```
