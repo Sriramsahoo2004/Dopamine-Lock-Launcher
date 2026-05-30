@@ -11,7 +11,9 @@ class LauncherService {
   );
 
   Future<List<Map<String, dynamic>>> getInstalledApps() async {
-    final result = await _platform.invokeListMethod<dynamic>('getInstalledApps');
+    final result = await _platform.invokeListMethod<dynamic>(
+      'getInstalledApps',
+    );
     if (result == null) {
       return [];
     }
@@ -23,16 +25,13 @@ class LauncherService {
   }
 
   Future<bool> launchApp(String packageName) async {
-    final launched = await _platform.invokeMethod<bool>(
-      'launchApp',
-      {'packageName': packageName},
-    );
+    final launched = await _platform.invokeMethod<bool>('launchApp', {
+      'packageName': packageName,
+    });
     return launched ?? false;
   }
 
-  Future<int> syncQuestions({
-    String baseUrl = 'http://10.0.2.2:8000',
-  }) async {
+  Future<int> syncQuestions({String baseUrl = 'http://10.0.2.2:8000'}) async {
     final response = await http.get(Uri.parse('$baseUrl/sync/questions'));
     if (response.statusCode != 200) {
       throw StateError('Question sync failed: ${response.statusCode}');

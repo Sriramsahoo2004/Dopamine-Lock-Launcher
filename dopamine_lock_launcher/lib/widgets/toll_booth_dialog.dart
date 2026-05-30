@@ -44,9 +44,9 @@ class _TollBoothDialogState extends State<TollBoothDialog> {
       _selectedAnswer = null;
     });
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Wrong answer. Try again.')),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Wrong answer. Try again.')));
   }
 
   @override

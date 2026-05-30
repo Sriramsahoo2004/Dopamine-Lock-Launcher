@@ -123,51 +123,51 @@ class _HomeScreenState extends State<HomeScreen> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _apps.isEmpty
-              ? const Center(child: Text('No launchable apps found.'))
-              : GridView.builder(
-                  padding: const EdgeInsets.all(16),
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 120,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                    childAspectRatio: 0.78,
-                  ),
-                  itemCount: _apps.length,
-                  itemBuilder: (context, index) {
-                    final app = _apps[index];
-                    final icon = app['icon'];
+          ? const Center(child: Text('No launchable apps found.'))
+          : GridView.builder(
+              padding: const EdgeInsets.all(16),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 120,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                childAspectRatio: 0.78,
+              ),
+              itemCount: _apps.length,
+              itemBuilder: (context, index) {
+                final app = _apps[index];
+                final icon = app['icon'];
 
-                    return InkWell(
-                      borderRadius: BorderRadius.circular(8),
-                      onTap: () => _handleAppTap(app),
-                      child: Padding(
-                        padding: const EdgeInsets.all(6),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SizedBox.square(
-                              dimension: 58,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: icon is Uint8List
-                                    ? Image.memory(icon, fit: BoxFit.cover)
-                                    : const Icon(Icons.android, size: 42),
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              app['appName'] as String,
-                              textAlign: TextAlign.center,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                          ],
+                return InkWell(
+                  borderRadius: BorderRadius.circular(8),
+                  onTap: () => _handleAppTap(app),
+                  child: Padding(
+                    padding: const EdgeInsets.all(6),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox.square(
+                          dimension: 58,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: icon is Uint8List
+                                ? Image.memory(icon, fit: BoxFit.cover)
+                                : const Icon(Icons.android, size: 42),
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                ),
+                        const SizedBox(height: 8),
+                        Text(
+                          app['appName'] as String,
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
     );
   }
 }
